@@ -10,6 +10,7 @@ thuappendixbib
 2.  在`main.tex`中引入本宏包。
     ```
     \usepackage{thuappendixbib}
+    
     ```
 3.  按如下方式在`main.tex`中增加附录。正文参考文献添加方式不变。
     ```
@@ -24,7 +25,7 @@ thuappendixbib
     \include{data/appendix01}
     \end{appendix}
     ```
-4.  在附录对应的`data/appendix01.tex`文件中添加参考文献。
+4.  在附录对应的`data/appendix01.tex`文件中添加引用及参考文献。
     ```
     \chapter{外文资料的调研阅读报告}
     
