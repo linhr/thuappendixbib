@@ -1,0 +1,49 @@
+\ProvidesPackage{thuappendixbib}[2014/06/17 THUThesis Appendix Bibliography]
+
+\makeatletter
+\let\original@bibliography\bibliography
+\let\original@thebibliography\thebibliography
+\let\original@bibliographystyle\bibliographystyle
+\let\original@include\include
+\let\original@cite\cite
+\let\original@nocite\nocite
+\makeatother
+
+\RequirePackage{chapterbib}
+
+\makeatletter
+\let\chapterbib@bibliography\bibliography
+\let\chapterbib@thebibliography\thebibliography
+\let\chapterbib@bibliographystyle\bibliographystyle
+\let\chapterbib@include\include
+\let\chapterbib@cite\cite
+\let\chapterbib@nocite\nocite
+
+\let\bibliography\original@bibliography
+\let\thebibliography\original@thebibliography
+\let\bibliographystyle\original@bibliographystyle
+\let\include\original@include
+\let\cite\original@cite
+\let\nocite\original@nocite
+
+\let\original@appendix\appendix
+\def\appendix{
+  \original@appendix
+  \let\bibliography\chapterbib@bibliography
+  \let\thebibliography\chapterbib@thebibliography
+  \let\bibliographystyle\chapterbib@bibliographystyle
+  \let\include\chapterbib@include
+  \let\cite\chapterbib@cite
+  \let\nocite\chapterbib@nocite
+
+  \let\original@include\include
+  \def\include##1{\setcounter{NAT@ctr}{0}\original@include{##1}}
+
+  \let\original@thebibliography\thebibliography
+  \def\thebibliography##1{
+    \def\thu@@@chapter[####1]####2[####3]{\@makechapterhead{####2}}% hack to suppress bib in toc
+    \def\@chapapp{\hskip-1em}% hack to center bib title
+    \original@thebibliography{##1}
+  }
+}
+\makeatother
