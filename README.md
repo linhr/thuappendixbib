@@ -3,6 +3,8 @@ thuappendixbib
 
 本宏包旨在为清华大学学位论文模板[ThuThesis](https://github.com/xueruini/thuthesis)提供附录参考文献支持。
 
+本宏包依赖于`chapterbib`宏包。
+
 使用方法
 ----
 
@@ -34,3 +36,17 @@ thuappendixbib
     \bibliographystyle{thubib}
     \bibliography{ref/refs}
     ```
+5.  按以下步骤编译文档（以使用XeLaTeX为例）。
+    ```
+    xelatex main
+    bibtex data/appendix01
+    bibtex main
+    xelatex main
+    xelatex main
+    ```
+    建议使用`latexmk`等工具自动完成整个编译过程以保证交叉引用正确。
+
+已知问题
+----
+
+ *  使用本宏包时，仅在附录中引用的文献会同时出现在正文和附录的参考文献列表中。解决该问题的方法是为正文和附录指定不同的`.bib`文件，并保证仅在附录中引用的BibTeX条目不出现在正文使用的`.bib`文件中。
