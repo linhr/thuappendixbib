@@ -10,12 +10,14 @@ thuappendixbib
 
 1.  将`thuappendixbib.sty`置于`main.tex`所在目录。
 2.  在`main.tex`中引入本宏包。
-    ```
+
+    ```latex
     \usepackage{thuappendixbib}
-    
     ```
+
 3.  按如下方式在`main.tex`中增加附录。正文参考文献添加方式不变。
-    ```
+
+    ```latex
     % 参考文献
     \bibliographystyle{thubib}
     \bibliography{ref/refs}
@@ -27,8 +29,10 @@ thuappendixbib
     \include{data/appendix01}
     \end{appendix}
     ```
+
 4.  在附录对应的`data/appendix01.tex`文件中添加引用及参考文献。
-    ```
+
+    ```latex
     \chapter{外文资料的调研阅读报告}
     
     Hello world\cite{hello}!
@@ -36,14 +40,17 @@ thuappendixbib
     \bibliographystyle{thubib}
     \bibliography{ref/refs}
     ```
+
 5.  按以下步骤编译文档（以使用XeLaTeX为例）。
-    ```
+
+    ```bash
     xelatex main
     bibtex data/appendix01
     bibtex main
     xelatex main
     xelatex main
     ```
+
     建议使用`latexmk`等工具自动完成整个编译过程以保证交叉引用正确。
 
 已知问题
